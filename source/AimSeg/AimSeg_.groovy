@@ -501,9 +501,6 @@ def roiIntersection(Map<String, Roi> map1, Map<String, Roi> map2, RoiManager rm2
 
 float[] roiEdges (ImagePlus imp, roiMap) {
     def list = []
-    //int roiCount = rm.getCount()
-    //println "$roiCount selected ROIs"
-    //rm.getRoisAsArray().each {
     roiMap.each { key, value ->
         if (value != null) {
             Rectangle b = value.getBounds()
@@ -1035,6 +1032,13 @@ rmAxon.runCommand("Sort")
 
 // save RoiSet_AXON
 rmAxon.save(parentPathS+File.separator+impNameWithoutExtension+"_RoiSet_AXON.zip")
+
+// replace AXON result by 0 when there is no OUT Roi
+for (i in 0..areaListAxon.size()-1) {
+    if(areaListOut[i] == 0) {
+        areaListAxon[i] = 0
+    }
+}
 
 /**
  * RESULTS TABLE
