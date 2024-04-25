@@ -499,13 +499,14 @@ def roiIntersection(Map<String, Roi> map1, Map<String, Roi> map2, RoiManager rm2
  * and complete Rois as 0.0
  */
 
-float[] roiEdges (ImagePlus imp, RoiManager rm) {
+float[] roiEdges (ImagePlus imp, roiMap) {
     def list = []
-    int roiCount = rm.getCount()
-    println "$roiCount selected ROIs"
-    rm.getRoisAsArray().each {
-        if (it != null) {
-            Rectangle b = it.getBounds()
+    //int roiCount = rm.getCount()
+    //println "$roiCount selected ROIs"
+    //rm.getRoisAsArray().each {
+    roiMap.each { key, value ->
+        if (value != null) {
+            Rectangle b = value.getBounds()
             double h = b.getHeight()
             double w = b.getWidth()
             double x = b.getX()
@@ -517,6 +518,8 @@ float[] roiEdges (ImagePlus imp, RoiManager rm) {
             } else {
             	list.add(0.0 as float)
             }
+        } else {
+        	list.add(0.0 as float)
         }
     }
     return list
@@ -1052,7 +1055,7 @@ for (i in (0..areaListAxon.size()-1)) {
 }
 
 // rois on borders
-float[] roiEdgeList = roiEdges(imp, rmOut)
+float[] roiEdgeList = roiEdges(imp, mapOut)
 
 // create and fill results table
 ResultsTable rt = new ResultsTable(areaListIn.size())
