@@ -1,5 +1,13 @@
 # AimSeg - Axon, Inner tongue and Myelin Segmentation
 
+> [!NOTE]
+> **AimSeg is no longer actively maintained.** It is superseded by
+> [AxonPath](https://github.com/paucabar/qupath-extension-axonpath), a deep learning tool for
+> segmenting myelinated fibres (fibre, inner cylinder and axon) in electron microscopy and
+> brightfield images, which runs inside QuPath.
+> AimSeg remains available as published, for reproducibility, with its Fiji update site and the
+> [Zenodo record](https://doi.org/10.5281/zenodo.8351731).
+
 ## Overview
 
 AimSeg is a bioimage analysis tool that blends machine learning, automated post-processing, and user guidance to achieve the segmentation of axons, inner tongue, and compact myelin in electron microscopy data. The workflow relies on pixel and object classifiers trained in ilastik, while a supervised mode empowers users to refine the automated selections made by AimSeg.
